@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Page Creation</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: aliceblue;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #878eeb;
+        color: azure;
+        text-align: center;
+        padding: 15px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .data-item {
+        margin-bottom: 10px;
+      }
+
+      .data-item span {
+        font-weight: bold;
+      }
+
+      footer {
+        background-color: #878eeb;
+        text-align: center;
+        padding: 10px;
+      }
+
+      footer a {
+        cursor: pointer;
+        text-decoration: none;
+        color: azure;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Personal Data</h1>
+    </header>
+    <div class="container">
+      <div class="data-item" data-testid="slackUserName">
+        <label>Slack Name:</label>
+        <span>Moschifire</span>
+      </div>
+      <div class="data-item" data-testid="slackDisplayImage">
+        <img src="./moschifire.jpg" alt="Moschifire" width="200px" />
+      </div>
+      <div class="data-item" data-testid="currentDayOfTheWeek">
+        <label>Weekday:</label>
+        <span id="currentDay"></span>
+      </div>
+      <div class="data-item" data-testid="currentUTCTime">
+        <label>Current UTC Time:</label>
+        <span id="currentUTC"></span>
+      </div>
+      <div class="data-item" data-testid="myTrack">
+        <label>Track:</label>
+        <span>Front End</span>
+      </div>
+    </div>
+    <footer>
+      <div class="github-link" data-testid="githubURL">
+        <a
+          href="https://github.com/Moschifire/HNGX_stage_one.git"
+          target="_blank"
+          >My GitHub Repo</a
+        >
+      </div>
+    </footer>
+    <script>
+      function updateDateTime() {
+        const weekday = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        const currentDate = new Date();
+        const day = weekday[currentDate.getDay()];
+        const time = currentDate.getTime();
+
+        document.getElementById("currentDay").innerHTML = day;
+        document.getElementById("currentUTC").innerHTML = time;
+      }
+      updateDateTime();
+      setInterval(updateDateTime, 1000);
+    </script>
+  </body>
+</html>
