@@ -13,10 +13,10 @@
       }
 
       header {
-        background-color: #878eeb;
+        background-color: rgb(29, 27, 27);
         color: azure;
         text-align: center;
-        padding: 15px;
+        padding: 10px;
       }
 
       .container {
@@ -27,18 +27,19 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
       }
 
-      .data-item {
-        margin-bottom: 10px;
-      }
-
-      .data-item span {
+      p {
         font-weight: bold;
       }
 
+      img {
+        width: 200px;
+        border-radius: 10px;
+      }
+
       footer {
-        background-color: #878eeb;
+        background-color: rgb(29, 27, 27);
         text-align: center;
-        padding: 10px;
+        padding: 5px;
       }
 
       footer a {
@@ -53,34 +54,23 @@
       <h1>Personal Data</h1>
     </header>
     <div class="container">
-      <div class="data-item" data-testid="slackUserName">
-        <label>Slack Name:</label>
-        <span>Moschifire</span>
-      </div>
-      <div class="data-item" data-testid="slackDisplayImage">
-        <img src="./asset/moschifire.jpg" alt="Moschifire" width="200px" />
-      </div>
-      <div class="data-item" data-testid="currentDayOfTheWeek">
-        <label>Weekday:</label>
-        <span id="currentDay"></span>
-      </div>
-      <div class="data-item" data-testid="currentUTCTime">
-        <label>Current UTC Time:</label>
-        <span id="currentUTC"></span>
-      </div>
-      <div class="data-item" data-testid="myTrack">
-        <label>Track:</label>
-        <span>Front End</span>
-      </div>
+      <p data-testid="slackUserName">Moschifire</p>
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/hngxstageone.appspot.com/o/moschifire.jpg?alt=media&token=3a6d953f-ea87-4917-be95-a4dd83947c33"
+        data-testid="slackDisplayImage"
+        alt="Moschifire"
+      />
+      <p data-testid="currentDayOfTheWeek"></p>
+      <p data-testid="currentUTCTime"></p>
+      <p data-testid="myTrack">Front End</p>
     </div>
     <footer>
-      <div class="github-link" data-testid="githubURL">
-        <a
-          href="https://github.com/Moschifire/HNGX_stage_one.git"
-          target="_blank"
-          >My GitHub Repo</a
-        >
-      </div>
+      <a
+        href="https://github.com/Moschifire/HNGX_stage_one.git"
+        target="_blank"
+        data-testid="githubURL"
+        >My GitHub Repo</a
+      >
     </footer>
     <script>
       function updateDateTime() {
@@ -97,8 +87,11 @@
         const day = weekday[currentDate.getDay()];
         const time = currentDate.getTime();
 
-        document.getElementById("currentDay").innerHTML = day;
-        document.getElementById("currentUTC").innerHTML = time;
+        document.querySelector(
+          '[data-testid="currentDayOfTheWeek"]'
+        ).innerHTML = day;
+        document.querySelector('[data-testid="currentUTCTime"]').innerHTML =
+          time;
       }
       updateDateTime();
       setInterval(updateDateTime, 1000);
